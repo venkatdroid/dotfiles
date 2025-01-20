@@ -18,7 +18,7 @@ echo "==> Script started at: $(date)"
 #############################################################
 # Utility scripts and env vars used only within this script #
 #############################################################
-ZSH_CUSTOM="${ZSH_CUSTOM:-${ZSH:-${HOME}/.oh-my-zsh}/custom}"
+export ZSH_CUSTOM="${ZSH_CUSTOM:-"${ZSH:-"${HOME}/.oh-my-zsh"}/custom"}"
 
 # These repos can be alternatively tracked using git submodules, but by doing so, any new change in the submodule, will show up as a new commit in the main (home) repo. To avoid this "noise", I prefer to decouple them
 clone_omz_plugin_if_not_present() {
@@ -267,25 +267,6 @@ else
   warn 'skipping symlinking idea/idea-ce for command-line invocation'
 fi
 
-#####################
-# Setup login items #
-#####################
-section_header 'Setting up login items'
-app_list=(
-  'AlDente.app'
-  'Clocker.app'
-  'Ice.app'
-  'KeepingYouAwake.app'
-  'Keybase.app'
-  'Raycast.app'
-  'Stats.app'
-  'ZoomHider.app'
-)
-for app in "${app_list[@]}"; do
-  setup_login_item "${app}"
-done
-unset app_list
-
 if is_non_zero_string "${KEYBASE_USERNAME}"; then
   ! command_exists keybase && error 'Keybase not found in the PATH. Aborting!!!'
 
@@ -438,6 +419,25 @@ if command_exists recron; then
 else
   warn "skipping setting up of cron jobs since 'recron' couldn't be found in the PATH; Please set it up manually"
 fi
+
+#####################
+# Setup login items #
+#####################
+section_header 'Setting up login items'
+app_list=(
+  'AlDente.app'
+  'Clocker.app'
+  'Ice.app'
+  'KeepingYouAwake.app'
+  'Keybase.app'
+  'Raycast.app'
+  'Stats.app'
+  'ZoomHider.app'
+)
+for app in "${app_list[@]}"; do
+  setup_login_item "${app}"
+done
+unset app_list
 
 ###############################
 # Cleanup temp functions, etc #
