@@ -76,27 +76,23 @@ cask 'brave-browser'
 cask 'clocker', postinstall: "type setup_login_item &> /dev/null 2>&1 || source \"${HOME}/.aliases\"; setup_login_item 'Clocker'"
 cask 'firefox@nightly' #, greedy: true
 cask 'jordanbaird-ice', postinstall: "type setup_login_item &> /dev/null 2>&1 || source \"${HOME}/.aliases\"; setup_login_item 'Ice'"
+cask 'intellij-idea-ce'
 cask 'keepassxc@beta'
 cask 'keepingyouawake', postinstall: "type setup_login_item &> /dev/null 2>&1 || source \"${HOME}/.aliases\"; setup_login_item 'KeepingYouAwake'"
 cask 'keycastr'
 cask 'keyclu' if is_arm
 cask 'monolingual'
-cask 'notunes'
-cask 'ollama', restart_service: :changed
-cask 'onlyoffice'
-cask 'onyx'
-cask 'protonvpn'
 cask 'rancher'
 cask 'raycast', postinstall: "type setup_login_item &> /dev/null 2>&1 || source \"${HOME}/.aliases\"; setup_login_item 'Raycast'"
-cask 'silicon' if is_arm
 cask 'stats', postinstall: "type setup_login_item &> /dev/null 2>&1 || source \"${HOME}/.aliases\"; setup_login_item 'Stats'"
+cask 'raycast'
+cask 'stats'
+cask 'tableplus'
 cask 'the-unarchiver'
+cask 'visual-studio'
 cask 'vscodium@insiders'   # TODO: Doesn't handle 'Remote Containers' and GH-based auto-syncing when compared to VSCode
-cask 'zen-browser@twilight'
+cask 'webstorm'
 cask 'zoom'
-
-brew 'mas'
-mas 'PDFgear', id: 6469021132
 
 # VSCode extensions
 # Note: I don't want brew to silently install VS Code (which is what it does currently if the following lines are present but it doesn't find code!)
