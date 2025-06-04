@@ -29,7 +29,6 @@ puts "Only performing base installation!" if is_base_install
 at_exit { system('post-brew-install.sh') }
 
 tap 'romkatv/powerlevel10k'
-tap 'Picocrypt/picocrypt' if is_arm
 
 # formulae pulled in from homebrew to replace system equivalents to fix any security issues since the OS was released
 brew 'bash'
@@ -72,28 +71,24 @@ brew 'tldr'
 cask 'aldente', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'AlDente'"
 cask 'brave-browser'
 cask 'clocker', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Clocker'"
-cask 'fliqlo'
 cask 'firefox@nightly' #, greedy: true
+cask 'fliqlo'
+cask 'intellij-idea-ce'
 cask 'jordanbaird-ice', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Ice'" if OS::Mac::version >= 14
 cask 'keepassxc@beta'
 cask 'keycastr'
 cask 'keyclu' if is_arm
-cask 'ollama', restart_service: :changed
-cask 'onlyoffice'
-cask 'onyx'
-cask 'pearcleaner'
-cask 'picocrypt' if is_arm
-cask 'protonvpn'
 cask 'rancher'
 cask 'raycast', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Raycast'"
 cask 'stats', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Stats'"
+cask 'tableplus'
 cask 'the-unarchiver'
-cask 'vscodium@insiders'   # TODO: Doesn't handle 'Remote Containers' and GH-based auto-syncing when compared to VSCode
-cask 'zen@twilight'
+cask 'visual-studio'
+cask 'visual-studio-code'
+cask 'bruno'
+cask 'azure-data-studio'
+cask 'mono-mdk-for-visual-studio'
 cask 'zoom'
-
-brew 'mas'
-mas 'PDFgear', id: 6469021132
 
 # VSCode extensions
 # Note: I don't want brew to silently install VS Code (which is what it does currently if the following lines are present but it doesn't find code!)
@@ -140,6 +135,16 @@ if is_vscode_installed
   vscode 'wayou.vscode-todo-highlight'
   vscode 'wmaurer.change-case'
   vscode 'yzhang.markdown-all-in-one'
+  vscode 'eamodio.gitlens'
+  vscode 'ms-azuretools.azure-dev'
+  vscode 'ms-azuretools.vscode-azureappservice'
+  vscode 'ms-azuretools.vscode-azureresourcegroups'
+  vscode 'ms-dotnettools.csdevkit'
+  vscode 'ms-dotnettools.csharp'
+  vscode 'ms-dotnettools.vscode-dotnet-runtime'
+  vscode 'ms-dotnettools.vscodeintellicode-csharp'
+  vscode 'ms-vscode.azurecli'
+  vscode 'saoudrizwan.claude-dev'
 end
 
 # ----------------------------------------------------------------------------------------------------------
